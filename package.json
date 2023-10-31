@@ -1,0 +1,14 @@
+{
+  "name": "cloudflare",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "2captcha-ts": "^2.1.1",
+    "puppeteer": "^21.4.1"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
