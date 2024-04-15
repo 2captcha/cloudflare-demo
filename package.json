@@ -5,7 +5,7 @@
   "type": "module",
   "license": "MIT",
   "dependencies": {
-    "2captcha-ts": "^2.1.1",
+    "@2captcha/captcha-solver": "^1.0.0",
     "puppeteer": "^21.4.1"
   },
   "scripts": {
