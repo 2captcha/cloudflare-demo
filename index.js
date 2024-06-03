@@ -39,7 +39,7 @@ const example = async () => {
             return;
         }
     })
-    page.goto('https://rucaptcha.com/42')
+    page.goto('https://2captcha.com/demo/cloudflare-turnstile-challenge')
 }
 
 example()
