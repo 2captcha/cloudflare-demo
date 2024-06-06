@@ -1,14 +1,22 @@
 import { launch } from 'puppeteer'
 import { Solver } from '@2captcha/captcha-solver'
 import { readFileSync } from 'fs'
+import { normalizeUserAgent } from './normalize-ua.js'
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 const solver = new Solver(process.env.APIKEY)
 
 const example = async () => {
+    // If you are using `headless: true` mode, you need to fix userAgent. NormalizeUserAgent is used for this purpose.
+    const initialUserAgent = await normalizeUserAgent()
 
     const browser = await launch({
         headless: false,
-        devtools: true
+        devtools: true,
+        args: [
+            `--user-agent=${initialUserAgent}`,
+        ]
     })
 
     const [page] = await browser.pages()
@@ -16,8 +24,6 @@ const example = async () => {
     const preloadFile = readFileSync('./inject.js', 'utf8');
     await page.evaluateOnNewDocument(preloadFile);
 
-    // If you are using `headless: true` mode, you need to manually set your `userAgent`:
-    // await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36')
 
     // Here we intercept the console messages to catch the message logged by inject.js script
     page.on('console', async (msg) => {
@@ -46,5 +52,3 @@ const example = async () => {
 }
 
 example()
-
-
