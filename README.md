@@ -15,3 +15,11 @@ export APIKEY=your_api_key
 yarn install
 yarn start
 ```
+
+## License
+
+The code in this repository is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
+
+### Graphics and Trademarks
+
+The graphics and trademarks included in this repository are not covered by the MIT License. Please contact <a href="mailto:support@2captcha.com">support</a> for permissions regarding the use of these materials.
